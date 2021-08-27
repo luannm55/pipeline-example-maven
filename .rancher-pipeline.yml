@@ -3,9 +3,7 @@ stages:
   steps:
   - runScriptConfig:
       image: bitnami/kubectl:latest
-      shellScript: 
-        - echo $KUBECONFIGFILE > kubeconfig.yaml
-        - export KUBECONFIG='kubeconfig.yaml'
+      shellScript: echo $KUBECONFIGFILE > kubeconfig.yaml && export KUBECONFIG='kubeconfig.yaml'
     envFrom:
     - sourceName: config
       sourceKey: config
