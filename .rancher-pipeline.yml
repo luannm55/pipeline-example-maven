@@ -2,8 +2,8 @@ stages:
 - name: Build
   steps:
   - runScriptConfig:
-      image: bitnami/kubectl
-      shellScript: kubectl get pods
+      image: bitnami/kubectl:latest
+      shellScript: get pods
     envFrom:
     - sourceName: config
       sourceKey: config
