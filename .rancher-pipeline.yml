@@ -3,9 +3,11 @@ stages:
   steps:
   - runScriptConfig:
       image: bitnami/kubectl:latest
-      shellScript: get pods
+      shellScript: 
+        - echo $KUBECONFIGFILE > kubeconfig.yaml
+        - export KUBECONFIG='kubeconfig.yaml'
     envFrom:
     - sourceName: config
       sourceKey: config
-      targetKey: KUBECONFIG
+      targetKey: KUBECONFIGFILE
 notification: {}
