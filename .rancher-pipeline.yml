@@ -2,10 +2,18 @@ stages:
 - name: Build
   steps:
   - runScriptConfig:
-      image: bitnami/kubectl:latest
-      shellScript: echo $KUBECONFIGFILE > kubeconfig.yaml && export KUBECONFIG='kubeconfig.yaml'
+      image: java:8
+      shellScript: |-
+        env
+        pritnenv
+        sleep 300
     envFrom:
     - sourceName: config
       sourceKey: config
       targetKey: KUBECONFIGFILE
+- name: backup
+  steps:
+  - runScriptConfig:
+      image: bitnami/kubectl:latest
+      shellScript: kubectl get pods
 notification: {}
