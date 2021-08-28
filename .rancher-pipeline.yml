@@ -9,5 +9,5 @@ stages:
         chmod +x kubectl
         mv kubectl /usr/local/bin/
         pod=$(kubectl get pods -n default | tail -n+2 | awk '{print $1}')
-        echo $pod
+        kubectl exec -it  $pod echo "Hell World"
 notification: {}
