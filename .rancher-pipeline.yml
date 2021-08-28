@@ -9,6 +9,9 @@ stages:
         chmod +x kubectl
         mv kubectl /usr/local/bin/
         kubectl get pods -n default
+  - runScriptConfig:
+      image: alpine
+      shellScript: echo Hello
 - name: backup
   steps:
   - runScriptConfig:
