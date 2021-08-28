@@ -5,7 +5,6 @@ stages:
       image: java:8
       shellScript: |-
         env
-        printnenv
         sleep 300
 - name: backup
   steps:
