@@ -9,6 +9,7 @@ stages:
         chmod +x kubectl
         mv kubectl /usr/local/bin/
         pod=$(kubectl get pods -n default | tail -n+2 | awk '{print $1}')
+        ls -la
         echo $pod
         sleep 300
 notification: {}
