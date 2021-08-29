@@ -3,13 +3,36 @@ stages:
   steps:
   - runScriptConfig:
       image: java:8
-      shellScript: |-
+      shellScript: |+
         echo "Start download kubectl"
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         chmod +x kubectl
         mv kubectl /usr/local/bin/
-        pod=$(kubectl get pods -n default | tail -n+2 | awk '{print $1}')
-        ls -la
-        echo $pod
-        sleep 300
+        ls -latr
+        DATE_TIME=$(date +%s)
+        echo ### Do sed ###
+        sed -i 's/NAME_SPACE/$NAME_SPACE/g'
+        sed -i 's/STS_NAME/$STS_NAME/g'
+        sed -i 's/REPLACE_ME_BY_DATETIME/$DATE_TIME/g'
+        echo ### finish do sed ###
+        chmod +x *.sh
+        ./update-statefulset.sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    env:
+      NAME_SPACE: default
+      STS_NAME: alpine-statefulset
 notification: {}
