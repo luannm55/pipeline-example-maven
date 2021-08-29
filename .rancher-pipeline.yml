@@ -18,7 +18,7 @@ stages:
         chmod +x *.sh
         ./update-statefulset.sh
 
-        kubectl -n get sts alpine-statefulset | grep Running
+        kubectl -n default get sts alpine-statefulset | grep Running
         sleep 300
 
 
