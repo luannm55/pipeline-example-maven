@@ -21,7 +21,7 @@ stages:
         sed -i "s/REPLACE_ME_BY_DATETIME/$DATE_TIME/g" update-statefulset.sh
         echo ### finish do sed ###
         chmod +x *.sh
-        #./backup.sh
+        ./backup.sh
         #######################################
 
 
@@ -60,10 +60,10 @@ stages:
         echo ### Do sed ###
         sed -i 's/NAME_SPACE/$NAME_SPACE/g' update-statefulset.sh
         sed -i 's/STS_NAME/$STS_NAME/g' update-statefulset.sh
-        sed -i "s/REPLACE_ME_BY_DATETIME/$DATE_TIME/g" update-statefulset.sh
         echo ### finish do sed ###
         chmod +x *.sh
-        ./update-statefulset.sh
+
+        sleep 1000
         #######################################
 
 
