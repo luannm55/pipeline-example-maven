@@ -19,6 +19,7 @@ stages:
         #./update-statefulset.sh
 
         ls -latr /usr/local/bin
+        sleep 500
 
 
 
@@ -36,14 +37,4 @@ stages:
     env:
       NAME_SPACE: default
       STS_NAME: alpine-statefulset
-- name: Test
-  steps:
-  - runScriptConfig:
-      image: python:latest
-      shellScript: ls -latr /user/local/bin/
-  - runScriptConfig:
-      image: php:latest
-      shellScript: |-
-        echo "php"
-        ls -latr /usr/local/bin/
 notification: {}
