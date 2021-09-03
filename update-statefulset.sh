@@ -26,7 +26,7 @@ function parameters_changed(){
 
 # Check if a new deploy is need ?
 function need_deploy(){
-    if base_image_changed && parameters_changed; then
+    if base_image_changed || parameters_changed; then
         return 0;
     else 
         return 1;   
