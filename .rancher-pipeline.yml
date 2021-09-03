@@ -66,8 +66,9 @@ stages:
         sed -i "s/REPLACE_ME_BY_BASE_IMAGE_ID/$BASE_IMAGE_TAG/g" update-statefulset.sh
         echo ### finish do sed ###
         chmod +x *.sh
-        ./update-statefulset.sh
         sleep 1000
+        ./update-statefulset.sh
+
         #######################################
 
 
