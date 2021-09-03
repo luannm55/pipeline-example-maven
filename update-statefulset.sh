@@ -26,7 +26,7 @@ function parameters_changed(){
 
 # Check if a new deploy is need ?
 function need_deploy(){
-    if base_image_changed || parameters_changed; then
+    if base_image_changed && parameters_changed; then
         return 0;
     else 
         return 1;   
@@ -39,7 +39,7 @@ function need_deploy(){
 # BASE_IMAGE
 function update_sts(){
     echo "Start Deploy ..."
-    kubectl -n NAME_SPACE patch sts STS_NAME --type='json' -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/image", "value":"REPLACE_ME_BY_BASE_IMAGE_ID"}]'
+    kubectl -n NAME_SPACE patch sts STS_NAME --type='json' -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/image", "value":"REPLACE_ME_BY_BASE_IMAGE_ID"}, {"op": "replace", "path": "/spec/template/spec/containers/0/env/0/name", "value":"new_git_url"}]'
 }
 
 function main(){
