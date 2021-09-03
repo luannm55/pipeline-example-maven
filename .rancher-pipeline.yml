@@ -5,8 +5,8 @@ stages:
       image: java:8
       shellScript: |+
         echo "Update base image"
-        apt update -y
-        apt install jq -y
+        apt-get update -y
+        apt-get install jq -y
         ln -s /usr/bin/jq /usr/bin/local/jq
 
         echo "Start download kubectl"
