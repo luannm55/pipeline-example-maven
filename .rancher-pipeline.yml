@@ -18,7 +18,7 @@ stages:
         chmod +x *.sh
         #./update-statefulset.sh
 
-        ls -latr /user/local/bin
+        ls -latr /usr/local/bin
 
 
 
