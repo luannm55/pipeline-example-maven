@@ -1,0 +1,7 @@
+{
+"baseImageTag": "httpd",
+  "reDeployWorkload": {
+    "apache" : "true",
+    "cron" : "true"
+  }
+}
