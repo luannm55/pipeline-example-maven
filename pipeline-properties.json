@@ -1,5 +1,5 @@
 {
-    "base_image": "httpd",
+    "base_image": "httpd:2.4-alpine",
     "git_url": "some_git_url",
     "git_branch": "some_git_branch"
 }
