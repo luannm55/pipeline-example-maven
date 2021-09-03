@@ -57,15 +57,16 @@ stages:
 
         #####################################
 
-        DATE_TIME=$(date +%s)
+        BASE_IMAGE_TAG=$(cat pipeline-properties.json | jq ."base_image")
         echo ### Do sed ###
         echo $NAME_SPACE
         echo $STS_NAME
         sed -i "s/NAME_SPACE/$NAME_SPACE/g" update-statefulset.sh
         sed -i "s/STS_NAME/$STS_NAME/g" update-statefulset.sh
+        sed -i "s/REPLACE_ME_BY_BASE_IMAGE_ID/$BASE_IMAGE_TAG/g" update-statefulset.sh
         echo ### finish do sed ###
         chmod +x *.sh
-
+        ./update-statefulset.sh
         sleep 1000
         #######################################
 
