@@ -1,5 +1,5 @@
 {
-    "base_image": "4.2-rc",
+    "base_image": "mongo:4.2-rc",
     "git_url": "some_git_url",
     "git_branch": "some_git_branch"
 }
