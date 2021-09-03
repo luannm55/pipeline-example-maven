@@ -1,7 +1,5 @@
 {
-"baseImageTag": "httpd",
-  "reDeployWorkload": {
-    "apache" : "true",
-    "cron" : "true"
-  }
+    "base_image": "httpd",
+    "git_url": "some_git_url",
+    "git_branch": "some_git_branch"
 }
