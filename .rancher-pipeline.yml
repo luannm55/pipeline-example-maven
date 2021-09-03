@@ -57,7 +57,7 @@ stages:
 
         #####################################
 
-        BASE_IMAGE_TAG=$(cat pipeline-properties.json | jq ."base_image")
+        BASE_IMAGE_TAG=$(cat pipeline-properties.json | jq -r ."base_image")
         echo ### Do sed ###
         echo $NAME_SPACE
         echo $STS_NAME
