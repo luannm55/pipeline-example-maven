@@ -4,11 +4,6 @@ stages:
   - runScriptConfig:
       image: java:8
       shellScript: |+
-        echo "Update base image"
-        apt-get update -y
-        apt-get install jq -y
-        ln -s /usr/bin/jq /usr/bin/local/jq
-
         echo "Start download kubectl"
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         chmod +x kubectl
@@ -22,9 +17,8 @@ stages:
         echo ### finish do sed ###
         chmod +x *.sh
         #./update-statefulset.sh
-        jq
 
-        ls -latr /user/bin/local/jq
+        ls -latr /user/local/bin
 
 
 
