@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function base_image_changed(){
-    current_base_image=(kubectl get sts STS_NAME -n NAME_SPACE -o jsonpath={.spec.template.spec.containers[*].image})
+    current_base_image=$(kubectl get sts STS_NAME -n NAME_SPACE -o jsonpath={.spec.template.spec.containers[*].image})
     desire_base_image=$(cat pipeline-properties.json | jq -r ."base_image")
     echo $desire_base_image
     if [ "${desire_base_image}" == "$current_base_image" ]; then
