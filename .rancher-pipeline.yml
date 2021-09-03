@@ -59,6 +59,8 @@ stages:
 
         DATE_TIME=$(date +%s)
         echo ### Do sed ###
+        echo $NAME_SPACE
+        echo $STS_NAME
         sed -i 's/NAME_SPACE/$NAME_SPACE/g' update-statefulset.sh
         sed -i 's/STS_NAME/$STS_NAME/g' update-statefulset.sh
         echo ### finish do sed ###
