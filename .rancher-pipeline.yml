@@ -5,6 +5,7 @@ stages:
       image: java:8
       shellScript: |+
         #####################################
+
         echo "Installing tools"
         wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
         ln -s jq /usr/local/bin/jq
@@ -21,7 +22,7 @@ stages:
         sed -i "s/REPLACE_ME_BY_DATETIME/$DATE_TIME/g" update-statefulset.sh
         echo ### finish do sed ###
         chmod +x *.sh
-        ./backup.sh
+        sleep 50000
         #######################################
 
 
@@ -47,6 +48,7 @@ stages:
       image: java:8
       shellScript: |+
         #####################################
+        exit 1
         echo "Installing tools"
         wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
         chmod +x jq
