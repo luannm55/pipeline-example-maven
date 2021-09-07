@@ -50,4 +50,14 @@ stages:
     env:
       NAME_SPACE: nifa
       STS_NAME: apache
+- name: Test
+  steps:
+  - runScriptConfig:
+      image: java:8
+      shellScript: |
+        #!/bin/bash
+        sleep 300
+        curl $ENDPOINT
+    env:
+      ENDPOINT: http://34.220.214.50.nip.io/
 notification: {}
