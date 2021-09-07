@@ -46,46 +46,7 @@ stages:
   steps:
   - runScriptConfig:
       image: java:8
-      shellScript: |+
-        #####################################
-        echo "Installing tools"
-        wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
-        chmod +x jq
-        mv jq /usr/local/bin/
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-        chmod +x kubectl
-        mv kubectl /usr/local/bin/
-
-        #####################################
-
-        BASE_IMAGE_TAG=$(cat pipeline-properties.json | jq -r ."base_image")
-        echo ### Do sed ###
-        echo $NAME_SPACE
-        echo $STS_NAME
-        sed -i "s/NAME_SPACE/$NAME_SPACE/g" update-statefulset.sh
-        sed -i "s/STS_NAME/$STS_NAME/g" update-statefulset.sh
-        sed -i "s/REPLACE_ME_BY_BASE_IMAGE_ID/$BASE_IMAGE_TAG/g" update-statefulset.sh
-        echo ### finish do sed ###
-        chmod +x *.sh
-        #./update-statefulset.sh
-        sleep 10000
-
-        #######################################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      shellScript: "#####################################\napt-get update -y || true\napt-get install vim -y || true\necho \"Installing tools\"\nwget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64\nchmod +x jq\nmv jq /usr/local/bin/\ncurl -LO \"https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl\"\nchmod +x kubectl\nmv kubectl /usr/local/bin/\n\n#####################################\n\nBASE_IMAGE_TAG=$(cat pipeline-properties.json | jq -r .\"base_image\")\necho ### Do sed ###\necho $NAME_SPACE\necho $STS_NAME\nsed -i \"s/NAME_SPACE/$NAME_SPACE/g\" update-statefulset.sh\nsed -i \"s/STS_NAME/$STS_NAME/g\" update-statefulset.sh\nsed -i \"s/REPLACE_ME_BY_BASE_IMAGE_ID/$BASE_IMAGE_TAG/g\" update-statefulset.sh\n\n# replace all deployment file\ncurrent_color=\"blue\"\nif [ \"${current_color}\" == \"blue\" ]; then\n\tnew_color=\"green\"\nelse\n\tnew_color=\"blue\"\nfi\nsed -i \"s|BLUE_OR_GREEN|$new_color|g\" deployment/*.yaml\nsed -i \"s/NAME_SPACE/$NAME_SPACE/g\" deployment/*.yaml\nsed -i \"s/STS_NAME/$STS_NAME/g\" deployment/*.yaml\necho ### finish do sed ###\nchmod +x *.sh\n#./update-statefulset.sh\nsleep 10000\n\n#######################################\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
     env:
       NAME_SPACE: nifa
       STS_NAME: apache
