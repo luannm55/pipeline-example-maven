@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: STS_NAME
+  namespace: NAME_SPACE
+spec:
+  rules:
+  - host: 34.220.214.50.xip.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: apache-BLUE_OR_GREEN
+            port:
+              number: 80
+        pathType: ImplementationSpecific
