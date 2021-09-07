@@ -5,7 +5,8 @@ stages:
       image: java:8
       shellScript: |+
         #####################################
-
+        apt-get update -y || true
+        apt-get install vim -y || true
         echo "Installing tools"
         wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64
         ln -s jq /usr/local/bin/jq
