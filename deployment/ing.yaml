@@ -5,7 +5,7 @@ metadata:
   namespace: NAME_SPACE
 spec:
   rules:
-  - host: 34.220.214.50.xip.io
+  - host: 34.220.214.50.nip.io
     http:
       paths:
       - backend:
