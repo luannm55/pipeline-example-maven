@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    application.name: apache-BLUE_OR_GREEN
+  name: apache-BLUE_OR_GREEN
+  namespace: NAME_SPACE
+spec:
+  ports:
+  - name: 80tcp02
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    application.name: apache-BLUE_OR_GREEN
+    application.type: BLUE_OR_GREEN
