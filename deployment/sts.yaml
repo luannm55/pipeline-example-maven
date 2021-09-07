@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   labels:
-    application.name: apache-BLUE_OR_GREEN
-    application.type: BLUE_OR_GREEN
+    application-name: apache-BLUE_OR_GREEN
+    application-type: BLUE_OR_GREEN
   name: apache-BLUE_OR_GREEN
   namespace: NAME_SPACE
 
@@ -11,14 +11,14 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      application.name: apache-BLUE_OR_GREEN
-      application.type: BLUE_OR_GREEN
+      application-name: apache-BLUE_OR_GREEN
+      application-type: BLUE_OR_GREEN
   serviceName: apache-BLUE_OR_GREEN
   template:
     metadata:
       labels:
-        application.name: apache-BLUE_OR_GREEN
-        application.type: BLUE_OR_GREEN
+        application-name: apache-BLUE_OR_GREEN
+        application-type: BLUE_OR_GREEN
     spec:
       containers:
       - env:
