@@ -54,10 +54,20 @@ stages:
   steps:
   - runScriptConfig:
       image: java:8
-      shellScript: |
+      shellScript: |+
         #!/bin/bash
-        sleep 300
-        curl $ENDPOINT
+
+        curl -I $ENDPOINT > temp.file
+
+        if grep -q "200" temp.file; then
+        echo """
+        ######## OK  #################
+        Application Success Deployed
+        ##############################
+
+
+
+
     env:
       ENDPOINT: http://34.220.214.50.nip.io/
 notification: {}
