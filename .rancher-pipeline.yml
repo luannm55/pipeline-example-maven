@@ -23,7 +23,6 @@ stages:
         sed -i "s/REPLACE_ME_BY_DATETIME/$DATE_TIME/g" update-statefulset.sh
         echo ### finish do sed ###
         chmod +x *.sh
-        sleep 50000
         #######################################
 
 
@@ -89,6 +88,6 @@ stages:
 
 
     env:
-      NAME_SPACE: default
+      NAME_SPACE: nifa
       STS_NAME: apache
 notification: {}
