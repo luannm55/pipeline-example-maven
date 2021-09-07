@@ -57,7 +57,7 @@ stages:
       shellScript: |+
         #!/bin/bash
 
-        curl -I $ENDPOINT > temp.file
+        curl -I "$ENDPOINT" > temp.file
 
         if grep -q "200" temp.file; then
         echo """
@@ -69,5 +69,5 @@ stages:
 
 
     env:
-      ENDPOINT: http://34.220.214.50.nip.io/
+      ENDPOINT: http://34.220.214.50.nip.io
 notification: {}
